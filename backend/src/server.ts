@@ -5,14 +5,18 @@ import path from 'path';
 
 dotenv.config();
 
+const authRoutes = require("./routes/authRoutes");
 const app: Application = express();
 const db: any = require('./config/db');
+const helmet = require("helmet");
 const port: string | number = process.env.PORT || 8080;
 
 app.use(express.json());
 app.use(cors());
+app.use(helmet());
 app.use(express.static(path.join(__dirname, '../../frontend/dist')));
-app.get('/', async (req, res) => {
+app.use('/', authRoutes);
+app.get('/test', async (req, res) => {
   try {
     const result = await db.query('SELECT * FROM users');
     res.json(result.rows);
