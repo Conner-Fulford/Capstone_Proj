@@ -11,7 +11,7 @@ const app: Application = express();
 const db: any = require('./config/db');
 const port: string | number = process.env.PORT || 8080;
 
-// Security
+// Security and Logging
 const helmet = require('helmet');
 const morgan = require("morgan");
 const session = require("express-session");
@@ -37,6 +37,9 @@ app.use(session({
 app.use(cookieParser());
 app.use('/', authRoutes);
 
+app.get('*', (req: Request, res: Response) => {
+  res.sendFile(path.join(__dirname, '../../frontend/dist/index.html'));
+});
 
 app.get('/test', async (req: Request, res: Response) => {
   try {
