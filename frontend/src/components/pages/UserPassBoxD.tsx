@@ -4,9 +4,9 @@ import { Container } from "react-bootstrap"
 import { Col } from "react-bootstrap"
 import { Row } from "react-bootstrap"
 import { Button } from "react-bootstrap"
-import img from '../assets/mySpaceLogo.png';
+import img from '../../assets/mySpaceLogo.png';
 
-function UserPassBox() {
+function UserPassBoxD() {
     return <>
         <div style={{ width: 475, height: 'auto', margin: 'auto', paddingTop: 200 }}>
             <Container>
@@ -36,4 +36,4 @@ function UserPassBox() {
     </>
 }
 
-export default UserPassBox
+export default UserPassBoxD
