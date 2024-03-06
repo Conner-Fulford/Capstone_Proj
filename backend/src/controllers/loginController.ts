@@ -2,7 +2,7 @@ const bcryptLogin = require("bcrypt");
 const clientLogin = require("../config/db");
 const jwtLogin = require("jsonwebtoken");
 
-exports.login = async (req: { body: { email: any; password: any; }; }, res: { status: (arg0: number) => { (): any; new(): any; json: { (arg0: { error?: string; message?: string; token?: any; }): void; new(): any; }; }; }) => {
+exports.login = async (req: { body: { email: string; password: string; }; }, res: { status: (arg0: number) => { (): any; new(): any; json: { (arg0: { error?: string; message?: string; token?: any; }): void; new(): any; }; }; }) => {
     const { email, password } = req.body;
     try {
         const data = await clientLogin.query(`SELECT * FROM users WHERE email= $1;`, [email]);
