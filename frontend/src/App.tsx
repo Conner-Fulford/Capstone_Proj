@@ -1,4 +1,4 @@
-import UserPassBox from "./components/UserPassBox";
+import UserPassBox from "./components/pages/UserPassBoxD";
 
 function App(){
   return <div><UserPassBox /></div>;
