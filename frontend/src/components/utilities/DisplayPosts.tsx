@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image } from 'react-bootstrap';
-import profilePic1 from '../assets/profilePic.png'
+import profilePic1 from '../../assets/profilePic.png'
 
 interface PostCardProps {
     profilePic: string;

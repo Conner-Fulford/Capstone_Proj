@@ -4,8 +4,10 @@
     "\\frontend",
     "\\frontend\\src",
     "\\frontend\\src\\assets",
-    "\\frontend\\src\\components"
+    "\\frontend\\src\\components",
+    "\\frontend\\src\\components\\pages",
+    "\\frontend\\src\\components\\utilities"
   ],
-  "SelectedNode": "\\frontend\\src\\assets\\profilePic.png",
+  "SelectedNode": "\\frontend\\src\\index.css",
   "PreviewInSolutionExplorer": false
 }

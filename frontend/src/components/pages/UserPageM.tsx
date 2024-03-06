@@ -1,11 +1,14 @@
-import React from 'react';
-import { Container, Col, Row, Image, Button } from 'react-bootstrap';
-import DisplayPosts from '../components/DisplayPosts';
-import img from '../assets/mySpaceLogo.png';
-import banner from '../assets/banner.png';
-import profilePic from '../assets/profilePic.png'
+import React, { useState } from 'react';
+import { Container, Col, Row, Image, Button} from 'react-bootstrap';
+import DisplayPosts from '../utilities/DisplayPosts';
+import EditProfileModal from '../utilities/EditProfileModal'
+import img from '../../assets/mySpaceLogo.png';
+import banner from '../../assets/banner.png';
+import profilePic from '../../assets/profilePic.png'
 
-function AccountManagement() {
+function UserPageM() {
+    const [showEditModal, setShowEditModal] = useState(false);
+
     const user = {
         proPic: '../assets/profilePic.png',
         userBanner: '../assets/banner.png',
@@ -18,6 +21,17 @@ function AccountManagement() {
             { id: 2, content: "i am aware that i'm not concious, and im just a test user" },
             // Add more posts as needed
         ],
+    };
+
+    // Example currentUser object or identifier
+    const currentUser = '@bob'; // This should come from your authentication logic
+
+    const handleEditProfileClick = () => {
+        setShowEditModal(true);
+    };
+
+    const handleCloseEditModal = () => {
+        setShowEditModal(false);
     };
 
     return (
@@ -52,14 +66,17 @@ function AccountManagement() {
             <div style={{ height: '12px' }}></div> {/* Adjust the height value as needed */}
 
             {/* Buttons */}
-            <Row style={{justifyContent: 'center', textAlign: 'center' }}>
-                <Col>
-                    <Button variant="info" size='sm'>Edit Profile</Button>
-                </Col>
-                <Col>
-                    <Button variant="danger" size='sm'>Delete Account</Button>
-                </Col>
+            <Row style={{ justifyContent: 'center', textAlign: 'center' }}>
+                {/* Conditionally render the Edit Profile button */}
+                {currentUser === user.username && (
+                    <Col>
+                        <Button variant="info" size='sm' onClick={handleEditProfileClick}>Edit Profile</Button>
+                    </Col>
+                )}
             </Row>
+
+            {/* Use the new EditProfileModal component */}
+            <EditProfileModal show={showEditModal} handleClose={handleCloseEditModal} />
 
             {/* empty div for spaceing */}
             <div style={{ height: '15px' }}></div> {/* Adjust the height value as needed */}
@@ -76,4 +93,4 @@ function AccountManagement() {
     );
 }
 
-export default AccountManagement;
+export default UserPageM;
