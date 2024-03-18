@@ -6,8 +6,8 @@ import cors from 'cors';
 const app: Application = express();
 
 app.use(helmet());
-app.use(authRoutes);
 app.use(express.json());
 app.use(cors());
+app.use(authRoutes);
 
 export default app;
