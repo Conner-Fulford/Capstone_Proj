@@ -1,6 +1,6 @@
-const bcryptRegister = require("bcrypt");
-const clientRegister = require("../config/db");
-const jwtRegister = require("jsonwebtoken");
+import bcryptRegister from 'bcrypt';
+import clientRegister from '../config/db';
+import jwtRegister from 'jsonwebtoken';
 
 const register = async (req: any, res: any) => {
   const { email, password } = req.body;
@@ -31,7 +31,7 @@ const register = async (req: any, res: any) => {
               {
                 email: user.email,
               },
-              process.env.SECRET_KEY
+              (process.env as any).SECRET_KEY
             );
             return res.status(200).send({ message: 'User added to database, not verified', token });
           }
