@@ -4,6 +4,6 @@ WORKDIR /usr/src/app
 
 COPY . .
 
-RUN npm install && npm run build
+RUN npm install
  
 EXPOSE 5173

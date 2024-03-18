@@ -6,13 +6,13 @@ import verifyJWT from '../middlewares/authMiddleware';
 
 const router = express.Router();
 
-router.post('/auth/register', registerController);
+router.post('/api/auth/register', registerController);
 
-router.post("/auth/login", loginController);
+router.post("/api/auth/login", loginController);
 
-router.post('/auth/account', accountController);
+router.post('/api/auth/account', accountController);
 
-router.post('/auth/verify', verifyJWT, (req: Request, res: Response) => {
+router.post('/api/auth/verify', verifyJWT, (req: Request, res: Response) => {
     res.status(200).json({ authenticated: true });
 });
 
