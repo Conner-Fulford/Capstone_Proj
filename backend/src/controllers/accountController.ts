@@ -1,6 +1,6 @@
- const bcryptAccount = require("bcrypt");
-  const clientAccount = require("../config/db");
-  const jwtAccount = require("jsonwebtoken");
+ import bcryptAccount from 'bcrypt';
+ import jwtAccount from 'jsonwebtoken';
+ import clientAccount from '../config/db';
   
   const account = async (req: any, res: any) => {
     const { user_id, email, password } = req.body;  
