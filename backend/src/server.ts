@@ -6,7 +6,7 @@ dotenv.config();
 
 const port: string | number = process.env.PORT || 8080;
 
-app.get('/test', async (req, res) => {
+app.get('/api/test', async (req, res) => {
   try {
     const result = await db.query('SELECT * FROM users');
     res.json(result.rows);
