@@ -2,7 +2,7 @@
   const clientAccount = require("../config/db");
   const jwtAccount = require("jsonwebtoken");
   
-  exports.account = async (req: any, res: any) => {
+  const account = async (req: any, res: any) => {
     const { user_id, email, password } = req.body;  
   
     try{
@@ -33,8 +33,7 @@
       res.status(500).json({
         error: 'Database error while registering user!',
       });
-    }
-  
-  
-  
+    } 
   }
+
+export default account;

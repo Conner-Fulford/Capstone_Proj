@@ -2,7 +2,7 @@ const bcryptRegister = require("bcrypt");
 const clientRegister = require("../config/db");
 const jwtRegister = require("jsonwebtoken");
 
-exports.register = async (req: { body: { email: any; password: any; }; }, res: { status: (arg0: number) => { (): any; new(): any; json: { (arg0: { error: string; }): void; new(): any; }; send: { (arg0: { message: string; token: any; }): any; new(): any; }; }; }) => {
+const register = async (req: any, res: any) => {
   const { email, password } = req.body;
   try {
     const data = await clientRegister.query(`SELECT * FROM users WHERE email= $1;`, [email]);
@@ -45,3 +45,5 @@ exports.register = async (req: { body: { email: any; password: any; }; }, res: {
     });
   }
 };
+
+export default register;

@@ -1,17 +1,15 @@
 import dotenv from 'dotenv';
+import { Pool } from 'pg';
 
 dotenv.config();
-const { Pool } = require('pg');
 
 const pool = new Pool({
   user: process.env.DBUSER,
   password: process.env.DBPASSWORD,
   host: process.env.DBHOST,
-  port: process.env.DBPORT,
+  port: parseInt(process.env.DBPORT || "5432"),
   database: process.env.DB,
-  ssl: {rejectUnauthorized: false}
+  ssl: { rejectUnauthorized: false },
 });
 
-module.exports = {
-    query: (text: any, params: any) => pool.query(text, params)
-  };
+export default pool;
