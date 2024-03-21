@@ -8,6 +8,6 @@
     "\\frontend\\src\\components\\pages",
     "\\frontend\\src\\components\\utilities"
   ],
-  "SelectedNode": "\\frontend\\src\\index.css",
+  "SelectedNode": "\\frontend\\src\\components\\utilities\\ResponsiveRendering.tsx",
   "PreviewInSolutionExplorer": false
 }
