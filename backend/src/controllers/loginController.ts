@@ -1,8 +1,8 @@
-const bcryptLogin = require("bcrypt");
-const clientLogin = require("../config/db");
-const jwtLogin = require("jsonwebtoken");
+import bcryptLogin from 'bcrypt';
+import jwtLogin from 'jsonwebtoken';
+import clientLogin from "../config/db";
 
-exports.login = async (req: { body: { email: any; password: any; }; }, res: { status: (arg0: number) => { (): any; new(): any; json: { (arg0: { error?: string; message?: string; token?: any; }): void; new(): any; }; }; }) => {
+const login = async (req: any, res: any) => {
     const { email, password } = req.body;
     try {
         const data = await clientLogin.query(`SELECT * FROM users WHERE email= $1;`, [email]);
@@ -22,7 +22,7 @@ exports.login = async (req: { body: { email: any; password: any; }; }, res: { st
                         {
                             email: email,
                         },
-                        process.env.SECRET_KEY
+                        (process.env as any).SECRET_KEY
                     );
                     res.status(200).json({
                         message: "User signed in!",
@@ -43,3 +43,5 @@ exports.login = async (req: { body: { email: any; password: any; }; }, res: { st
         });
     }
 };
+
+export default login;
