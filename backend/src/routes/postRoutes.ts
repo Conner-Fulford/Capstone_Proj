@@ -1,8 +1,9 @@
-import express, { Request, Response } from "express";
+import express from "express";
 import postController from '../controllers/postController';
+import verifyJWT from '../middlewares/authMiddleware'; 
 
 const router = express.Router();
 
-router.post('/api/post', postController.post);
+router.post('/api/post', verifyJWT, postController.post);
 
 export default router;
