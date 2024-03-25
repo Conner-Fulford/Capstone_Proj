@@ -22,6 +22,15 @@ const verify = (req: Request, res: Response, next: NextFunction) => {
 
   try {
     const decoded = jwt.verify(token, (process.env as any).SECRET_KEY);
+    const user_id_from_token = (decoded as any).user_id;
+
+    if (req.body.user_id != user_id_from_token) {
+      return res.status(403).json({
+        success: false,
+        message: "Unauthorized access",
+      });
+    }
+
     (req as any).user = decoded;
     next();
   } catch (err) {
