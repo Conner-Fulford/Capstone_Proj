@@ -25,4 +25,33 @@ const post = async (req: any, res: any) => {
   }
 };
 
-export default { post };
+const get_post = async (req: any, res: any) => {
+  const { post_id } = req.body;
+  try {
+    if(Number.isInteger(post_id)){
+      const data = await db.query(`SELECT * FROM posts WHERE post_id= $1;`, [
+        post_id,
+      ]);
+
+      res.status(201).json({
+        post_id: data["rows"][0]["post_id"],
+        user_id:  data["rows"][0]["user_id"],
+        post_content:  data["rows"][0]["post_content"],
+        post_type:  data["rows"][0]["post_type"],
+        media_url:  data["rows"][0]["media_url"],
+        created_at:  data["rows"][0]["created_at"]
+      });
+
+    } else {
+      return res.status(400).json({ error: "Post ID is not an integer!" });
+    }
+
+
+
+
+  } catch (error: any) {
+    return res.status(400).json(error.message);
+  }
+};
+
+export default { post, get_post};
