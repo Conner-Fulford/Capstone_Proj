@@ -1,0 +1,11 @@
+.profile-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+.markdown-editor,
+.markdown-preview {
+  width: 50%;
+  height: 100%;
+}

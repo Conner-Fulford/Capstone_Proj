@@ -8,8 +8,8 @@ import {
   Button,
 } from "react-bootstrap";
 import img from "../assets/mySpaceLogo.png";
-import { getUserIdFromToken, signin } from "../services/auth.api";
-import { useNavigate, Link } from "react-router-dom";
+import { signup } from "../services/auth.api";
+import { Link, useNavigate } from "react-router-dom";
 
 function UserPassBox() {
   const [email, setEmail] = useState("");
@@ -20,14 +20,13 @@ function UserPassBox() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      const result = (await signin({ email, password })) as unknown as {
+      const result = (await signup({ email, password })) as unknown as {
         userId: string;
       };
-      console.log("Login successful:", result);
-      const userId = await getUserIdFromToken();
-      navigate(`/profile/${userId}`);
+      console.log("Register successful:", result);
+      navigate('/');
     } catch (error) {
-      console.error("Login failed:", error);
+      console.error("Register failed:", error);
     }
   };
 
@@ -68,17 +67,17 @@ function UserPassBox() {
                 />
               </FloatingLabel>
               <Button variant="primary" style={{ width: "100%" }} type="submit">
-                Login
+                Register
               </Button>
               <Link
-                to="/register"
+                to="/"
                 style={{
                   display: "block",
                   marginTop: "10px",
                   textAlign: "center",
                 }}
               >
-                Register
+                Login
               </Link>
             </Form>
           </Col>
