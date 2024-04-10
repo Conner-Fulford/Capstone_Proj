@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import db from "../config/db";
+import { serialize } from "cookie";
 
 const login = async (req: any, res: any) => {
   const { email, password } = req.body;
@@ -30,6 +31,15 @@ const login = async (req: any, res: any) => {
               },
               (process.env as any).SECRET_KEY
             );
+             res.setHeader(
+               "Set-Cookie",
+               serialize("token", token, {
+                 httpOnly: false,
+                 secure: false,
+                 sameSite: "strict",
+                 maxAge: 60 * 60 * 24 * 7,
+               })
+             );
             res.status(200).json({
               message: "User signed in!",
               token: token,
