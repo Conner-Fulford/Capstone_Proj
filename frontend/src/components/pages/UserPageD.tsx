@@ -2,6 +2,7 @@ import { useState } from 'react';
 import {Container, Button, Nav, Navbar, Offcanvas, Tab, Tabs, Row, Col, Card, CardFooter, CardHeader} from "react-bootstrap";
 import img from '../../assets/mySpaceLogo.png';
 import hamburger from '../../assets/hamburger.png';
+import user from '../pages/posts'
 
 function UserPageD (){
     const [show, setShow] = useState(false);

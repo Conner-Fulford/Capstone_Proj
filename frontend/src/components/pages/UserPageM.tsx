@@ -2,26 +2,12 @@ import React, { useState } from 'react';
 import { Container, Col, Row, Image, Button } from 'react-bootstrap';
 import DisplayPosts from '../utilities/DisplayPosts';
 import EditProfileModal from '../utilities/EditProfileModal'
-import img from '../../assets/mySpaceLogo.png';
 import banner from '../../assets/banner.png';
 import profilePic from '../../assets/profilePic.png'
+import user from '../pages/posts'
 
 function UserPageM() {
     const [showEditModal, setShowEditModal] = useState(false);
-
-    const user = {
-        proPic: '../assets/profilePic.png',
-        userBanner: '../assets/banner.png',
-        username: '@bob',
-        bio: 'Hello, I am a sample user!',
-        followers: 68,
-        following: 3,
-        posts: [
-            { id: 1, content: "my very first post" },
-            { id: 2, content: "i am aware that i'm not concious, and im just a test user" },
-            // Add more posts as needed
-        ],
-    };
 
     // Example currentUser object or identifier
     const currentUser = '@bob'; // This should come from your authentication logic
